@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+package.json
+script.txt
+banco-upload.html
+chave.json

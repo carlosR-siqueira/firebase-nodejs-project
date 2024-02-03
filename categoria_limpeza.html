@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="style.css">
+    <title>Utensílios de Limpeza e Higiene</title>
+</head>
+
+<body>
+    <main>
+        <h1> Utensílios de Limpeza e Higiene</h1>
+
+        <div class="containerLimpeza container-content">
+
+
+
+
+        </div>
+
+
+
+        <div class="modal">
+            <div class="modal-content">
+                <p>Tem certeza que deseja deletar este produto?</p>
+                <div class="modal-buttons">
+                    <button id="confirmBtn">Confirmar</button>
+                    <button id="cancelBtn" class="cancel">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal-edit">
+            <!-- Modal content -->
+            <div class="modal-content-edit">
+                <span class="close-modal-btn">&times;</span>
+
+                <div class="containerEdit">
+                    <h1>Editar Produto</h1>
+                    <div class="form">
+                        <select class="selectCategory">      
+                            <option value="Utensílios de limpeza e higiene">Utensílios de limpeza e higiene</option>
+                        </select>
+                        <input type="text" class="produtoName" placeholder="Nome do Produto">
+                        <input type="text" class="produtoDescription" placeholder="Descrição">
+                        <input type="text" class="produtoPrice" placeholder="Preço">
+                        <form id="uploadFormEdt">
+                            <input type="file" id="imageFileEdt" accept="image/*">
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <button class="excluir-imagem">Excluir Imagem</button>
+                        <input type="text" class="produtoImgUrlEdt" placeholder="imagem Url"><br>
+                        <button class="update-limpeza-btn">Atualizar Produto</button>
+                        <button class="cancel-btn">Cancelar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="modalLimpezaAdd" class="modalLimpezaAdd">
+            <!-- Modal content -->
+            <div class="modal-content-limpeza">
+                <span class="close-modal-btn" onclick="fecharModalLimpeza()">&times;</span>
+
+                <div class="container-Limpeza">
+                    <h1>Cadastro de Produto</h1>
+                    <div class="form">
+
+                        <input type="text" class="produtoNameLimpeza" placeholder="Nome do Produto" required>
+                        <input type="text" class="produtoDescriptionLimpeza" placeholder="Descrição" required>
+                        <input type="text" class="produtoPriceLimpeza" placeholder="Preço">
+                        <form id="uploadFormLimpeza" onsubmit="uploadLimpeza(event)">
+                            <input type="file" id="imageFileLimpeza" accept="image/*">
+                            <button type="submit">Enviar</button>
+                        </form>
+                        <input type="text" class="produtoImgUrl" placeholder="imagem Url" required><br>
+                        <button onclick="salvarDadosLimpeza()">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="open-modal" onclick="openLimpeza()">Adicionar Produtos</button>
+        <a href="index.html" class="btn btn-primary">Voltar</a>
+
+
+
+
+
+
+    </main>
+    <script src="script.js"></script>
+    <script src="delete.js"></script>
+    <script src="update.js"></script>
+    <script src="upload.js"></script>
+</body>
+
+</html>
