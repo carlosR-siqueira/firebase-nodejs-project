@@ -254,6 +254,18 @@ h1 {
 
 }
 
+.form textarea{
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border: inset 2px #000000;
+    padding: 8px;
+    height: 72px;
+    resize: none;
+    
+    
+}
+
 .imgBtn {
     margin: 0 0 20px 0;
     background-color: #4cacaf !important;

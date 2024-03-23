@@ -144,7 +144,7 @@ app.post('/uploadFest', upload.single('file'), async (req, res) => {
     try {
         const file = req.file;
         if (!file) {
-            
+
             return res.status(400).send('Nenhum arquivo enviado.');
         }
 
@@ -218,30 +218,30 @@ app.post('/uploadlimpeza', upload.single('file'), async (req, res) => {
 
 
 app.get("/listar-arquivos", async (req, res) => {
-  try {
-    const [files] = await admin.storage().bucket().getFiles();
+    try {
+        const [files] = await admin.storage().bucket().getFiles();
 
-    const nomesArquivos = await Promise.all(files.map(async file => {
-      const [url] = await file.getSignedUrl({
-        action: 'read',
-        expires: '01-01-2100', // Data de expiração do token de download (pode ser ajustada conforme necessário)
-      });
-      
-      return {
-        nome: file.name,
-        url: url,
-      };
-    }));
+        const nomesArquivos = await Promise.all(files.map(async file => {
+            const [url] = await file.getSignedUrl({
+                action: 'read',
+                expires: '01-01-2100', // Data de expiração do token de download (pode ser ajustada conforme necessário)
+            });
 
-    res.json(nomesArquivos);
-  } catch (error) {
-    console.error("Erro ao listar arquivos:", error);
-    res.status(500).send("Erro ao listar arquivos.");
-  }
+            return {
+                nome: file.name,
+                url: url,
+            };
+        }));
+
+        res.json(nomesArquivos);
+    } catch (error) {
+        console.error("Erro ao listar arquivos:", error);
+        res.status(500).send("Erro ao listar arquivos.");
+    }
 });
 
 
-  //excluir imagem do storage
+//excluir imagem do storage
 
 app.delete("/excluirImg/:pasta/:nomeArquivo", async (req, res) => {
     const { pasta, nomeArquivo } = req.params;
@@ -334,6 +334,22 @@ app.get("/produtos/descartaveis", (req, res) => {
             res.status(500).json({ error: erro.message }); // Enviar erro como JSON
         });
 });
+
+app.get("/produtos/descartaveis/:id", (req, res) => {
+    const id = req.params.id
+
+    admin.database().ref(`produto/Descartáveis/${id}`).once('value')
+        .then((snapshot) => {
+            const produto = snapshot.val()
+            produto.id = snapshot.key;
+            res.send(produto)
+        })
+        .catch((erro) => {
+            res.status(400).send(erro);
+        })
+
+
+})
 
 app.get("/produtos/domesticos", (req, res) => {
     const produtosRef = admin.database().ref("produto/Utensílios Domésticos");
